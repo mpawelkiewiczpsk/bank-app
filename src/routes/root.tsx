@@ -1,36 +1,15 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import React from 'react';
 import {
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
+  LogoutOutlined,
+  HomeOutlined,
+  BankOutlined,
+  BarcodeOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Button } from 'antd';
 
 const { Header, Content, Sider } = Layout;
-
-const items2: MenuProps['items'] = [
-  UserOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-].map((icon, index) => {
-  const key = String(index + 1);
-
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
-  };
-});
 
 export default function Root() {
   const navigate = useNavigate();
@@ -38,33 +17,56 @@ export default function Root() {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-    key,
-    label: `Contact ${key}`,
-    onClick: () => navigate(`contacts/${key}`),
-  }));
+  const sidebarItems: MenuProps['items'] = [
+    {
+      key: 'home',
+      icon: <HomeOutlined />,
+      label: 'Home',
+      onClick: () => navigate('/home'), // Update this to your desired path
+    },
+    {
+      key: 'transfer',
+      icon: <BankOutlined />,
+      label: 'Transfer',
+      onClick: () => navigate('/transfer'), // Update this to your desired path
+    },
+    {
+      key: 'blik',
+      icon: <BarcodeOutlined />,
+      label: 'Blik',
+      onClick: () => navigate('/blik'), // Update this to your desired path
+    },
+  ];
 
   return (
     <Layout style={{ height: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center' }}>
         <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={items1}
-          style={{ flex: 1, minWidth: 0 }}
-        />
       </Header>
       <Layout>
-        <Sider width={200} style={{ background: colorBgContainer }}>
+        <Sider
+          width={200}
+          style={{
+            background: colorBgContainer,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={['home']}
             style={{ height: '100%', borderRight: 0 }}
-            items={items2}
+            items={sidebarItems}
           />
+          <Button
+            icon={<LogoutOutlined />}
+            type="text"
+            onClick={() => navigate('/login')}
+            style={{ width: '100%', textAlign: 'center', marginBottom: '16px' }}
+          >
+            Logout
+          </Button>
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
           <Breadcrumb

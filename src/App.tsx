@@ -1,9 +1,16 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './views/error-page';
 import Contact from './views/contact';
 import Login from './views/login.tsx';
+import Home from './views/home.tsx';
+import Blik from './views/blik.tsx';
+import Transfer from './views/transfer.tsx';
 
 const App = () => {
   const router = createBrowserRouter([
@@ -13,8 +20,20 @@ const App = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: 'contacts/:contactId',
-          element: <Contact />,
+          path: '/',
+          element: <Navigate to="/home" replace />,
+        },
+        {
+          path: 'home',
+          element: <Home />,
+        },
+        {
+          path: 'transfer',
+          element: <Transfer />,
+        },
+        {
+          path: 'blik',
+          element: <Blik />,
         },
       ],
     },
