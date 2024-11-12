@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Input, Button, Typography, Row, Col, message } from 'antd';
 
@@ -20,9 +21,30 @@ export default function Login() {
     }
   };
 
+  const loginToSystem = () => {
+    axios
+      .get(`http://localhost:3000/users?nik=${nik}`)
+      .then(function (response) {
+        if (response.data?.length > 0) {
+          setIsNikSubmitted(true);
+          response.data[0].name
+            ? sessionStorage.setItem('name', response.data[0].name)
+            : null;
+          response.data[0].surname
+            ? sessionStorage.setItem('surname', response.data[0].surname)
+            : null;
+        } else {
+          message.warning('Nieprawidłowy numer NIK');
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const handleNikSubmit = () => {
     if (nik.length === 8) {
-      setIsNikSubmitted(true);
+      loginToSystem();
     } else {
       message.warning('NIK musi mieć 8 cyfr');
     }

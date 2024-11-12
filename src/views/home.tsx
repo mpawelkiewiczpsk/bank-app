@@ -64,7 +64,11 @@ export default function Home() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Title level={2}>Your Account</Title>
+      <Title level={2}>
+        {sessionStorage.getItem('name')
+          ? `${sessionStorage.getItem('name')} ${sessionStorage.getItem('surname')}`
+          : 'Your Account'}
+      </Title>
 
       <Row gutter={[16, 16]}>
         {/* Account Selector */}

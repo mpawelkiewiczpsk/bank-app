@@ -38,11 +38,7 @@ export default function Transfer() {
               { required: true, message: 'Please select or enter a recipient' },
             ]}
           >
-            <Select placeholder="Select recipient or enter a new one">
-              <Option value="Tom Smith">Tom Smith</Option>
-              <Option value="Alice Johnson">Alice Johnson</Option>
-              <Option value="New Recipient">New Recipient</Option>
-            </Select>
+            <Input placeholder="Enter recipient name" maxLength={26} />
           </Form.Item>
 
           {/* Recipient Account Number */}

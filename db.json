@@ -1,0 +1,42 @@
+{
+    "users":
+    [
+        {
+            "id": "1",
+            "name": "Joe",
+            "surname": "Doe",
+            "nik": "11111111",
+            "accounts": [
+                {
+                    "accountNumber": "1234 5678 9101 1121",
+                    "type": "Checking Account",
+                    "balance": "$3,450.00",
+                    "transactions": [
+                        { "title": "Grocery Shopping", "amount": "-$50.00", "date": "10/11/2024" },
+                        { "title": "Transfer from Tom", "amount": "+$100.00", "date": "09/11/2024" },
+                        { "title": "Mobile Recharge", "amount": "-$20.00", "date": "08/11/2024" },
+                        { "title": "Salary", "amount": "+$1500.00", "date": "01/11/2024" }
+                    ]
+                },
+                {
+                    "accountNumber": "2234 5678 9101 3345",
+                    "type": "Checking Account",
+                    "balance": "$10,450.00",
+                    "transactions": [
+                        { "title": "Grocery Shopping", "amount": "-$70.00", "date": "10/11/2024" },
+                        { "title": "Transfer from Tom", "amount": "+$170.00", "date": "09/11/2024" },
+                        { "title": "Mobile Recharge", "amount": "-$28.00", "date": "08/11/2024" },
+                        { "title": "Salary", "amount": "+$150.00", "date": "01/11/2024" }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Michał",
+            "surname": "Kowalski",
+            "nik": "22222222",
+            "accounts": []
+        }
+    ]
+}

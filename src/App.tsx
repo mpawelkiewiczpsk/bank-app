@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import Root from './routes/root';
 import ErrorPage from './views/error-page';
-import Contact from './views/contact';
 import Login from './views/login.tsx';
 import Home from './views/home.tsx';
 import Blik from './views/blik.tsx';

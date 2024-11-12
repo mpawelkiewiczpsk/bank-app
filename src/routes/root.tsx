@@ -38,6 +38,12 @@ export default function Root() {
     },
   ];
 
+  const logout = () => {
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('surname');
+    navigate('/login');
+  };
+
   return (
     <Layout style={{ height: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center' }}>
@@ -62,7 +68,7 @@ export default function Root() {
           <Button
             icon={<LogoutOutlined />}
             type="text"
-            onClick={() => navigate('/login')}
+            onClick={() => logout()}
             style={{ width: '100%', textAlign: 'center', marginBottom: '16px' }}
           >
             Logout
